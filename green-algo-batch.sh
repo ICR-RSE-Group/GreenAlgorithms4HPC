@@ -11,10 +11,9 @@
 source ~/.bashrc
 
 userCWD="$(pwd)"
-shared_path=$(cat /data/rds/DIT/SCICOM/SCRSE/shared/apps/GreenAlgorithms4HPC/shared_path.txt)
 
-cd "${shared_path}apps/GreenAlgorithms4HPC/"
+cd "$1"
 
-mamba activate "${shared_path}conda/GA_env"
-python3 "${shared_path}apps/GreenAlgorithms4HPC/__init__.py" --userCWD "$userCWD" --user "$1" --startDay "$2" --endDay "$3"
+mamba activate "$1/conda/GA_env"
+python3 "$1/apps/GreenAlgorithms4HPC/__init__.py" --userCWD "$userCWD" --user "$2" --startDay "$3" --endDay "$4"
 mamba deactivate
