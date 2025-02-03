@@ -174,6 +174,8 @@ if __name__ == "__main__":
     'carbonFootprint_failedJobs': 'sum',
     'cost_failedJobs': 'sum',
     'Cost (Pounds)': 'sum',
+    'TotalCPU (hours)': 'sum',
+    'CPUtime (hours)': 'sum',
     'Efficientcy (TotalCPU / CPUtime hours)': 'mean'
 }
 
@@ -181,6 +183,7 @@ if __name__ == "__main__":
 
     groupby_dict2 = {
         **common_groupby,
+        'SubmitDate': 'first',
         'AllocTRES': 'first',
         'PartitionX': 'first'
     }
