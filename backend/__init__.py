@@ -213,6 +213,9 @@ def main_backend(args):
     :return:
     '''
     ### Load cluster specific info
+    # print("cluster info debug", os.path.join(args.path_infrastucture_info, 'cluster_info.yaml'))
+    # print("pwd debug", os.pwd)
+
     with open(os.path.join(args.path_infrastucture_info, 'cluster_info.yaml'), "r") as stream:
         try:
             cluster_info = yaml.safe_load(stream)
