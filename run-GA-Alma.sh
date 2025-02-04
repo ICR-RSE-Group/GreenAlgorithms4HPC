@@ -4,8 +4,8 @@ source ~/.bashrc
 
 userCWD="$(pwd)"
 
-cd /data/scratch/shared/RSE/GreenAlgorithms4HPC/
+cd "${shared_path}/apps/GreenAlgorithms4HPC/"
 
-mamba activate /data/scratch/shared/RSE/envs/GA_env
-python3 /data/scratch/shared/RSE/GreenAlgorithms4HPC/__init__.py "$@" --userCWD "$userCWD"
+mamba activate "${shared_path}/conda/GA_env"
+python3 "${shared_path}/apps/GreenAlgorithms4HPC/__init__.py" "$@" --userCWD "$userCWD"
 mamba deactivate
