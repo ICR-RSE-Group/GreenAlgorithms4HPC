@@ -4,6 +4,8 @@ source ~/.bashrc
 
 userCWD="$(pwd)"
 
+[ -d GreenAlma ] || mkdir GreenAlma
+
 cd "${shared_path}/apps/GreenAlgorithms4HPC/"
 
 mamba activate "${shared_path}/conda/GA_env"
