@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=green-alma
-#SBATCH --output=$HOME/GreenAlma/green-alma.out
-#SBATCH --error=$HOME/GreenAlma/green-alma.err
+#SBATCH --output=green-alma.out
+#SBATCH --error=green-alma.err
 #SBATCH --partition=compute
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
@@ -14,7 +14,7 @@ username="$3"
 start_date="$4"
 end_date="$5"
 
-userCWD="$(pwd)"
+userCWD="$(pwd)/GreenAlma"
 
 # echo "userCWD=$userCWD"
 # echo "app_path=$app_path"
