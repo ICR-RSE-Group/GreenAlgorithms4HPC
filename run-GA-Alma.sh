@@ -4,7 +4,11 @@ source ~/.bashrc
 
 userCWD="$(pwd)"
 
-[ -d GreenAlma ] || mkdir GreenAlma
+if [ -d "GreenAlma" ]; then
+    :
+else
+    mkdir GreenAlma
+fi
 
 cd "${shared_path}/apps/GreenAlgorithms4HPC/"
 
