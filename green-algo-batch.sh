@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=green-alma
-#SBATCH --output=green-alma.out
-#SBATCH --error=green-alma.err
+#SBATCH --output=GreenAlma/green-alma.out
+#SBATCH --error=GreenAlma/green-alma.err
 #SBATCH --partition=compute
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
