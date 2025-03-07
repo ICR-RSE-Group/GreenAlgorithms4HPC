@@ -166,7 +166,7 @@ if __name__ == "__main__":
     df2['Efficientcy (TotalCPU / CPUtime hours)'] = df2.apply(calc_efficiency, axis=1)
     df2['Cost (Pounds)'] = df2.apply(calc_cost, axis=1)
 
-    df2.to_csv(f"{args.userCWD}/GreenAlma/{args.user}_all_data.csv", index=False)
+    df2.to_csv(f"{args.userCWD}/{args.user}_all_data.csv", index=False)
 
     common_groupby = {
     'UserX': 'first',
@@ -187,8 +187,8 @@ if __name__ == "__main__":
 
     result_submitdate = df2.groupby('SubmitDate').agg(groupby_dict).reset_index()
     # print("result_submitdate", result_submitdate)
-    result_submitdate.to_csv(f"{args.userCWD}/GreenAlma/{args.user}_submitdate_data.csv", index=False)
+    result_submitdate.to_csv(f"{args.userCWD}/{args.user}_submitdate_data.csv", index=False)
 
     result_jobname = df2.groupby('JobName').agg(groupby_dict2).reset_index()
     # print("result_jobname", result_jobname)
-    result_jobname.to_csv(f"{args.userCWD}/GreenAlma/{args.user}_jobname_data.csv", index=False)
+    result_jobname.to_csv(f"{args.userCWD}/{args.user}_jobname_data.csv", index=False)
