@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.bashrc
+source /data/rds/DIT/SCICOM/SCRSE/shared/source/.mamba
 
 userCWD="$(pwd)"
 

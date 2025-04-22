@@ -16,7 +16,7 @@ end_date="$5"
 
 userCWD="$(pwd)/GreenAlma"
 
-source ~/.bashrc
+source /data/rds/DIT/SCICOM/SCRSE/shared/source/.mamba
 
 cd "$app_path"
 

@@ -22,7 +22,7 @@ userCWD="$(pwd)/GreenAlma"
 # echo "start_date=$start_date"
 # echo "end_date=$end_date"
 
-source ~/.bashrc
+source /data/rds/DIT/SCICOM/SCRSE/shared/source/.mamba
 
 cd "$app_path"
 
