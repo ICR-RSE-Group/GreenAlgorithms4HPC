@@ -22,10 +22,8 @@ userCWD="$(pwd)/GreenAlma"
 # echo "start_date=$start_date"
 # echo "end_date=$end_date"
 
-source /data/rds/DIT/SCICOM/SCRSE/shared/source/.mamba
-
 cd "$app_path"
 
-mamba activate "$env_path"
-python3 "$app_path/__init__.py" --userCWD "$userCWD" --user "$username" --startDay "$start_date" --endDay "$end_date"
-mamba deactivate
+# Call the env's interpreter directly: no shell init / mamba activation needed,
+# which avoids the "unknown MAMBA_EXE" failure in non-interactive SLURM shells.
+"$env_path/bin/python3" "$app_path/__init__.py" --userCWD "$userCWD" --user "$username" --startDay "$start_date" --endDay "$end_date"
