@@ -163,7 +163,7 @@ if __name__ == "__main__":
 
     df2['TotalCPU (hours)'] = df2.apply(calc_used_CPU_hours, axis=1)
     df2['CPUtime (hours)'] = df2.apply(calc_allocated_CPU_hours, axis=1)
-    df2['Efficientcy (TotalCPU / CPUtime hours)'] = df2.apply(calc_efficiency, axis=1)
+    df2['Efficiency (TotalCPU / CPUtime hours)'] = df2.apply(calc_efficiency, axis=1)
     df2['Cost (Pounds)'] = df2.apply(calc_cost, axis=1)
 
     df2.to_csv(f"{args.userCWD}/{args.user}_all_data.csv", index=False)
@@ -174,7 +174,7 @@ if __name__ == "__main__":
     'carbonFootprint_failedJobs': 'sum',
     'cost_failedJobs': 'sum',
     'Cost (Pounds)': 'sum',
-    'Efficientcy (TotalCPU / CPUtime hours)': 'mean'
+    'Efficiency (TotalCPU / CPUtime hours)': 'mean'
 }
 
     groupby_dict = common_groupby.copy()
