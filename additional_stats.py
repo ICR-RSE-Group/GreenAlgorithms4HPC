@@ -1,19 +1,19 @@
 def calc_cost(row):
-    # print(row.columns)
-    if type(row['AllocTRES']) == float:
+    # Alma billing: 5p per CPU billing-unit-hour, 240p per GPU-hour.
+    # The billing TRES already accounts for the cores (and any partition billing
+    # weights), so it multiplies WALL-CLOCK hours, not CPUtime. 'CPUtime (hours)' is
+    # NCPUS * wall, so wall = CPUtime / NCPUS; dividing the cores back out is what
+    # stops the cost being quadratic in the core count.
+    if not isinstance(row['AllocTRES'], str):
         return 0
-    alloc_tres = row['AllocTRES'].split(',')
-    n_elements = len(alloc_tres)
-    billing = alloc_tres[0].split('=')[0]
-    if billing == 'billing':
-        n_bills = int(alloc_tres[0].split('=')[1])
-    cost = 0
-    for n in range(1, n_elements):
-        resource = alloc_tres[n].split('=')[0]
-        if resource == 'cpu':
-            cost += (5 * n_bills * row['CPUtime (hours)']) / 100
-        elif resource == 'gres/gpu':
-            cost += (240 * n_bills * row['CPUtime (hours)']) / 100
+    alloc_tres = dict(kv.split('=', 1) for kv in row['AllocTRES'].split(',') if '=' in kv)
+    n_cpus = int(alloc_tres.get('cpu', 0))
+    n_bills = int(alloc_tres.get('billing', n_cpus))
+    gpu_vals = [int(v) for k, v in alloc_tres.items() if k.startswith('gres/gpu')]
+    n_gpus = max(gpu_vals) if gpu_vals else 0
+    elapsed_hours = row['CPUtime (hours)'] / n_cpus if n_cpus else 0
+    cost = (5 * n_bills * elapsed_hours) / 100
+    cost += (240 * n_gpus * elapsed_hours) / 100
     return cost
 
 def calc_used_CPU_hours(row):
